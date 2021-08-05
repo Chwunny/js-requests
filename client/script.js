@@ -206,9 +206,11 @@ let body = {newFood: foodInput.value}
 
 axios.post('http://localhost:3000/food', body)
 .then(res => {
+    for (let i = 0; i < res.data.length; i++){
     let newItem = document.createElement('p')
-    newItem.textContent = res.data
+    newItem.textContent = res.data[i]
     document.querySelector('body').append(newItem)
+    }
 })
 }
 
