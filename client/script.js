@@ -206,22 +206,11 @@ let body = {newFood: foodInput.value}
 
 axios.post('http://localhost:3000/food', body)
 .then(res => {
-    for (let i = 0; i < res.data.length; i++){
-    let newItem = document.createElement('p')
-    newItem.textContent = res.data[i]
-    document.querySelector('body').append(newItem)
-    }
+    let newP = document.createElement('p')
+    newP.textContent = res.data.at(-1)
+    document.querySelector('body').appendChild(newP) 
 })
 }
 
-// const deleteFood = (event) => {
-//     event.preventDefault()
-
-//     axios.put('http://localhost:3000/food', {foods: []})
-//     .then(res => {
-//         console.log(res)
-//     })
-// }
 
 document.getElementById('foodAdd').addEventListener('click', createFood)
-// document.getElementById('foodReset').addEventListener('click', deleteFood)
